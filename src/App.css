@@ -1,20 +1,31 @@
-.App {
-  text-align: center;
-}
+/* .App {
+  text-align: left;
+} */
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
+header {
+  padding-left: 10%;
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+main {
+  background-color: #131313;
+}
+
+.film-card {
+  padding: 20px;
+  color: white;
+  display: inline;
+}
+
+.film-row {
+  overflow-x: scroll;
 }
 
 .App-link {

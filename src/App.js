@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { getPopularMovies, getTopRatedMovies } from "./utils";
+import FilmCard from './components/FilmCard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    popularMovies: "",
+    topRatedMovies: ""
+  };
+
+  componentDidMount() {
+    getPopularMovies().then(data => {
+      this.setState({ popularMovies: data.results });
+    });
+    getTopRatedMovies().then(data => {
+      this.setState({ topRatedMovies: data.results });
+    });
+  }
+
+  renderFilmCards(films) {
+    console.log("film", films);
+    return films.map(film => <FilmCard film={film} />)
+
+  }
+
+  render() {
+    console.log("state", this.state);
+    const { popularMovies, topRatedMovies } = this.state;
+    return (
+      <div className="App">
+        <header>
+          <h3>WebMovies</h3>
+        </header>
+        <main>
+          <div className="film-row">
+            {popularMovies && this.renderFilmCards(popularMovies)}
+          </div>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
