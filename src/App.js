@@ -4,6 +4,7 @@ import { Router, Switch, Route } from 'react-router';
 import { createBrowserHistory } from "history";
 
 import Main from "./containers/Main";
+import Movie from "./containers/Movie";
 
 const App = (props) => {
   console.log({props});
@@ -12,12 +13,10 @@ const App = (props) => {
 
   return (
     <div className="App">
-      {/*
-        <Main />
-        */}
         <Router history={customHistory}>
           <Switch>
-            <Route path="/" component={Main} />
+            <Route exact path="/" component={Main} />
+            <Route path="/movies/:id" component={Movie} />
           </Switch>
         </Router>
     </div>

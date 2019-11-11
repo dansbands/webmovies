@@ -1,5 +1,7 @@
 import React from 'react'
 import { getPopularMovies, getTopRatedMovies } from "../utils";
+import { Link } from 'react-router-dom';
+
 import FilmCard from '../components/FilmCard';
 
 class Main extends React.Component {
@@ -29,7 +31,9 @@ class Main extends React.Component {
     return (
       <div className="App">
         <header>
-          <h3>WebMovies</h3>
+          <Link className="main-title" to="/">
+            <h3>WebMovies</h3>
+          </Link>
         </header>
         <main>
           <div className="row-title">
