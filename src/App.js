@@ -11,6 +11,7 @@ class App extends React.Component {
 
   componentDidMount() {
     getPopularMovies().then(data => {
+      console.log({data})
       this.setState({ popularMovies: data.results });
     });
     getTopRatedMovies().then(data => {
@@ -19,13 +20,12 @@ class App extends React.Component {
   }
 
   renderFilmCards(films) {
-    console.log("film", films);
+    // console.log("film", films);
     return films.map(film => <FilmCard film={film} />)
-
   }
 
   render() {
-    console.log("state", this.state);
+    // console.log("state", this.state);
     const { popularMovies, topRatedMovies } = this.state;
     return (
       <div className="App">
@@ -33,8 +33,17 @@ class App extends React.Component {
           <h3>WebMovies</h3>
         </header>
         <main>
+          <div className="row-title">
+            Popular Movies
+          </div>
           <div className="film-row">
             {popularMovies && this.renderFilmCards(popularMovies)}
+          </div>
+          <div className="row-title">
+            Top Rated Movies
+          </div>
+          <div className="film-row">
+            {topRatedMovies && this.renderFilmCards(topRatedMovies)}
           </div>
         </main>
       </div>
