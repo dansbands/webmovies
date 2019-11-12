@@ -6,16 +6,33 @@ import FilmCard from '../components/FilmCard';
 
 class Main extends React.Component {
   state = {
-    popularMovies: "",
-    topRatedMovies: ""
+    popularMovies: '',
+    topRatedMovies: ''
   };
 
   componentDidMount() {
+    if (localStorage.popularMovies) {
+      const data = JSON.parse(localStorage.getItem('popularMovies'));
+      this.setState({ popularMovies: data })
+    }
+    if (localStorage.topRatedMovies) {
+      const data = JSON.parse(localStorage.getItem('topRatedMovies'));
+      this.setState({ topRatedMovies: data })
+    }
+    if (!localStorage.popularMovies || !localStorage.topRatedMovies) {
+      this.fetchData();
+    }
+  }
+
+  fetchData = () => {
     getPopularMovies().then(data => {
-      console.log({data})
+      const stringyData = JSON.stringify(data.results)
+      localStorage.setItem('popularMovies', stringyData)
       this.setState({ popularMovies: data.results });
     });
     getTopRatedMovies().then(data => {
+      const stringyData = JSON.stringify(data.results)
+      localStorage.setItem('topRatedMovies', stringyData)
       this.setState({ topRatedMovies: data.results });
     });
   }
