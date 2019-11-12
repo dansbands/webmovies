@@ -8,4 +8,4 @@ From the command line, run `npm i && npm start` to run the program locally.
 
 Have fun with **WebMovies!**
 
-<iframe src="https://embed.cl.ly/7b5133783160" width="575" height="400" style="border:none" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+<a href="https://cl.ly/7b5133783160" target="_blank"><img src="https://dzwonsemrish7.cloudfront.net/items/3G421Z1R2Z1f1l182W0g/Screen%20Recording%202019-11-12%20at%2012.26%20AM.gif" style="display: block;height: auto;width: 100%;"/></a>
