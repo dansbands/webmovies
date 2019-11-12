@@ -3,10 +3,12 @@
 } */
 
 header {
+  position: relative;
   padding-left: 10%;
   /* background-color: #282c34; */
   background-color: black;
-  min-height: 10vh;
+  min-height: 15vh;
+  margin: none;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -18,10 +20,42 @@ header {
 .main-title {
   text-decoration: none;
   color: red;
+  margin: none;
 }
 
 main {
+  position: relative;
+  top: 0;
+  margin: none;
+  color: white;
+  height: 95vh;
   background-color: #131313;
+  /* padding: 10px; */
+}
+
+.movie-container {
+  z-index: 1;
+  background-color: #131313;
+  min-width: 100%;
+  min-height: 100%;
+  margin-top: -20px;
+  padding: 0;
+}
+
+.movie-info {
+  background-color: rgba(0,0,0,0.5);
+  padding: 30px;
+  position: relative;
+  top: 60px;
+  width: 40%;
+  margin: 20px 50px;
+}
+
+.movie-poster {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  border: 5px solid white;
 }
 
 .film-card {

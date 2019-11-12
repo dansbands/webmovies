@@ -1,4 +1,4 @@
-const API_KEY = "e1e333657772f7a7401e80c7f25feef0";
+import { API_KEY } from './constants.js'
 
 export const getPopularMovies = (page) => {
   return fetch(
@@ -9,5 +9,11 @@ export const getPopularMovies = (page) => {
 export const getTopRatedMovies = (page) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${page}`
+  ).then(res => res.json());
+};
+
+export const getMovieById = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
   ).then(res => res.json());
 };
