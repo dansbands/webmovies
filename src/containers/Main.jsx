@@ -42,7 +42,6 @@ class Main extends React.Component {
   }
 
   render() {
-    // console.log("state", this.state);
     const { popularMovies, topRatedMovies } = this.state;
     return (
       <div className="App">
