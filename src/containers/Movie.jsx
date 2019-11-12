@@ -29,6 +29,7 @@ class Movie extends React.Component {
     const url = `url(${IMG_BASE_URL}w500${movie.backdrop_path}) no-repeat center center fixed`
     // console.log(url);
     // console.log({movie});
+    // poster image, title, synopsis, duration and rating
     return (
       <div className="App">
         <header>
@@ -44,6 +45,8 @@ class Movie extends React.Component {
                 <h5>{movie.tagline}</h5>
                 <h5>{movie.release_date}</h5>
                 <p>{movie.overview}</p>
+                <p>{movie.runtime} minutes</p>
+                <p>Users rated: {movie.vote_average/2} out of five stars. </p>
               </div>
               <div className="movie-poster">
                 <img src={`${IMG_BASE_URL}${width}${movie.poster_path}`} alt="poster" />
