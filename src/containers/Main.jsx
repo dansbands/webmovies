@@ -2,7 +2,7 @@ import React from "react";
 import { getPopularMovies, getTopRatedMovies } from "../utils";
 import { Link } from "react-router-dom";
 
-import FilmCard from "../components/FilmCard";
+import FilmRow from "../components/FilmRow";
 
 class Main extends React.Component {
   state = {
@@ -14,15 +14,13 @@ class Main extends React.Component {
     if (localStorage.popularMovies) {
       const data = JSON.parse(localStorage.getItem("popularMovies"));
       this.setState({ popularMovies: data });
+    } else {
+      this.fetchPopular();
     }
     if (localStorage.topRatedMovies) {
       const data = JSON.parse(localStorage.getItem("topRatedMovies"));
       this.setState({ topRatedMovies: data });
-    }
-    if (!localStorage.popularMovies) {
-      this.fetchPopular();
-    }
-    if (!localStorage.topRatedMovies) {
+    } else {
       this.fetchTopRated();
     }
   }
@@ -47,10 +45,6 @@ class Main extends React.Component {
     });
   }
 
-  renderFilmCards(films) {
-    return films.map(film => <FilmCard key={film.id} film={film} />);
-  }
-
   render() {
     const { popularMovies, topRatedMovies } = this.state;
     return (
@@ -61,14 +55,17 @@ class Main extends React.Component {
           </Link>
         </header>
         <main>
-          <div className="row-title">Popular Movies</div>
-          <div className="film-row">
-            {popularMovies && this.renderFilmCards(popularMovies)}
-          </div>
-          <div className="row-title">Top Rated Movies</div>
-          <div className="film-row">
-            {topRatedMovies && this.renderFilmCards(topRatedMovies)}
-          </div>
+          {popularMovies &&
+            <FilmRow movies={popularMovies} title="Popular Movies" />
+          }
+          {topRatedMovies &&
+            <FilmRow movies={topRatedMovies} title="Top Rated Movies" />
+          }
+          {!popularMovies && !topRatedMovies && (
+            <div className="empty-state">
+              <h1>No Films Available</h1>
+            </div>
+          )}
         </main>
       </div>
     );

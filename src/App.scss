@@ -118,6 +118,14 @@ main {
 }
 .film-row::-webkit-scrollbar { width: 0 !important }
 
+.empty-state {
+  position: relative;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App-link {
   color: #09d3ac;
 }
