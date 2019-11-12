@@ -1,4 +1,4 @@
-import { API_KEY, MOVIE_BASE_URL } from './constants.js'
+import { MOVIE_BASE_URL, API_KEY } from './constants.js'
 
 export const getPopularMovies = (page) => {
   console.log('getPopularMovies');

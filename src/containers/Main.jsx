@@ -19,23 +19,33 @@ class Main extends React.Component {
       const data = JSON.parse(localStorage.getItem("topRatedMovies"));
       this.setState({ topRatedMovies: data });
     }
-    if (!localStorage.popularMovies || !localStorage.topRatedMovies) {
-      this.fetchData();
+    if (!localStorage.popularMovies) {
+      this.fetchPopular();
+    }
+    if (!localStorage.topRatedMovies) {
+      this.fetchTopRated();
     }
   }
 
-  fetchData = () => {
+  fetchPopular = () => {
     getPopularMovies().then(data => {
-      const stringyData = JSON.stringify(data.results);
-      localStorage.setItem("popularMovies", stringyData);
-      this.setState({ popularMovies: data.results });
-    });
-    getTopRatedMovies().then(data => {
-      const stringyData = JSON.stringify(data.results);
-      localStorage.setItem("topRatedMovies", stringyData);
-      this.setState({ topRatedMovies: data.results });
+      if (data.results) {
+        const stringyData = JSON.stringify(data.results);
+        localStorage.setItem("popularMovies", stringyData);
+        this.setState({ popularMovies: data.results });
+      }
     });
   };
+
+  fetchTopRated = () => {
+    getTopRatedMovies().then(data => {
+      if (data.results) {
+        const stringyData = JSON.stringify(data.results);
+        localStorage.setItem("topRatedMovies", stringyData);
+        this.setState({ topRatedMovies: data.results });
+      }
+    });
+  }
 
   renderFilmCards(films) {
     return films.map(film => <FilmCard key={film.id} film={film} />);
