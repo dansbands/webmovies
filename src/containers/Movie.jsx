@@ -39,11 +39,10 @@ class Movie extends React.Component {
         </header>
         <main>
           {movie &&
-            <div className="movie-container" style={{ 'background': url, '-webkit-background-size': 'cover', 'backgroundColor': 'rgba(0,0,0,0.7)'  }} >
+            <div className="movie-container" style={{ 'background': url, 'WebkitBackgroundSize': 'cover', 'backgroundColor': 'rgba(0,0,0,0.7)'  }} >
               <div className="movie-info">
                 <h3>{movie.title}</h3>
                 <h5>{movie.tagline}</h5>
-                <h5>{movie.release_date}</h5>
                 <p>{movie.overview}</p>
                 <p>{movie.runtime} minutes</p>
                 <p>Users rated: {movie.vote_average/2} out of five stars. </p>

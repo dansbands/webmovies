@@ -34,6 +34,7 @@ main {
 }
 
 .movie-container {
+  position: relative;
   z-index: 1;
   background-color: #131313;
   min-width: 100%;
@@ -47,14 +48,15 @@ main {
   padding: 30px;
   position: relative;
   top: 60px;
-  width: 40%;
-  margin: 20px 50px;
+  width: 35%;
+  margin: 20px 30px;
+  left: 10%;
 }
 
 .movie-poster {
   position: absolute;
   top: 20px;
-  right: 50px;
+  right: 10%;
   border: 5px solid white;
 }
 
