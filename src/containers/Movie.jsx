@@ -3,7 +3,7 @@ import { getMovieById } from "../utils";
 import { Link } from "react-router-dom";
 import { IMG_BASE_URL } from "../utils/constants.js";
 import ModalVideo from "react-modal-video";
-import Ratings from "react-ratings-declarative";
+import RatingsWidget from '../components/RatingsWidget'
 
 class Movie extends React.Component {
   state = { movie: "", isOpen: false, videoId: null };
@@ -62,18 +62,7 @@ class Movie extends React.Component {
                 <p>{movie.overview}</p>
                 <p>{movie.runtime} minutes</p>
                 <p>Users rated: {" "}
-                  <Ratings
-                    rating={movie.vote_average / 2}
-                    widgetRatedColors="white"
-                    widgetEmptyColors="grey"
-                    widgetSpacings="0px"
-                    >
-                    <Ratings.Widget widgetDimension="20px" />
-                    <Ratings.Widget widgetDimension="20px" />
-                    <Ratings.Widget widgetDimension="20px" />
-                    <Ratings.Widget widgetDimension="20px" />
-                    <Ratings.Widget widgetDimension="20px" />
-                  </Ratings>
+                  <RatingsWidget rating={movie.vote_average} />
                    {" "} {movie.vote_average/2} out of five stars. </p>
               </div>
               {this.state.videoId ? (
