@@ -41,11 +41,14 @@ class Movie extends React.Component {
           {movie &&
             <div className="movie-container" style={{ 'background': url, 'WebkitBackgroundSize': 'cover', 'backgroundColor': 'rgba(0,0,0,0.7)'  }} >
               <div className="movie-info">
-                <h3>{movie.title}</h3>
-                <h5>{movie.tagline}</h5>
+                <h1>{movie.title}</h1>
+                <h3>{movie.tagline}</h3>
                 <p>{movie.overview}</p>
                 <p>{movie.runtime} minutes</p>
                 <p>Users rated: {movie.vote_average/2} out of five stars. </p>
+              </div>
+              <div className="controls">
+
               </div>
               <div className="movie-poster">
                 <img src={`${IMG_BASE_URL}${width}${movie.poster_path}`} alt="poster" />

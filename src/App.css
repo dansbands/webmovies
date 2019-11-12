@@ -53,11 +53,27 @@ main {
   left: 10%;
 }
 
+.controls {
+  background-color: rgba(0,0,0,0.5);
+  padding: 30px;
+  position: relative;
+  top: 80px;
+  width: 35%;
+  min-height: 100px;
+  margin: 20px 30px;
+  left: 10%;
+}
+
 .movie-poster {
   position: absolute;
   top: 20px;
   right: 10%;
   border: 5px solid white;
+  width: 25%;
+}
+
+.movie-poster img {
+  width: 100%;
 }
 
 .film-card {
@@ -65,6 +81,7 @@ main {
   color: white;
   display: inline-block;
 }
+
 
 .film-card:hover {
   cursor: pointer;
