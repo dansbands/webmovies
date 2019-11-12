@@ -1,23 +1,23 @@
-import React from 'react'
+import React from "react";
 import { getPopularMovies, getTopRatedMovies } from "../utils";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import FilmCard from '../components/FilmCard';
+import FilmCard from "../components/FilmCard";
 
 class Main extends React.Component {
   state = {
-    popularMovies: '',
-    topRatedMovies: ''
+    popularMovies: "",
+    topRatedMovies: ""
   };
 
   componentDidMount() {
     if (localStorage.popularMovies) {
-      const data = JSON.parse(localStorage.getItem('popularMovies'));
-      this.setState({ popularMovies: data })
+      const data = JSON.parse(localStorage.getItem("popularMovies"));
+      this.setState({ popularMovies: data });
     }
     if (localStorage.topRatedMovies) {
-      const data = JSON.parse(localStorage.getItem('topRatedMovies'));
-      this.setState({ topRatedMovies: data })
+      const data = JSON.parse(localStorage.getItem("topRatedMovies"));
+      this.setState({ topRatedMovies: data });
     }
     if (!localStorage.popularMovies || !localStorage.topRatedMovies) {
       this.fetchData();
@@ -26,20 +26,19 @@ class Main extends React.Component {
 
   fetchData = () => {
     getPopularMovies().then(data => {
-      const stringyData = JSON.stringify(data.results)
-      localStorage.setItem('popularMovies', stringyData)
+      const stringyData = JSON.stringify(data.results);
+      localStorage.setItem("popularMovies", stringyData);
       this.setState({ popularMovies: data.results });
     });
     getTopRatedMovies().then(data => {
-      const stringyData = JSON.stringify(data.results)
-      localStorage.setItem('topRatedMovies', stringyData)
+      const stringyData = JSON.stringify(data.results);
+      localStorage.setItem("topRatedMovies", stringyData);
       this.setState({ topRatedMovies: data.results });
     });
-  }
+  };
 
   renderFilmCards(films) {
-    // console.log("film", films);
-    return films.map(film => <FilmCard key={film.id} film={film} />)
+    return films.map(film => <FilmCard key={film.id} film={film} />);
   }
 
   render() {
@@ -53,15 +52,11 @@ class Main extends React.Component {
           </Link>
         </header>
         <main>
-          <div className="row-title">
-            Popular Movies
-          </div>
+          <div className="row-title">Popular Movies</div>
           <div className="film-row">
             {popularMovies && this.renderFilmCards(popularMovies)}
           </div>
-          <div className="row-title">
-            Top Rated Movies
-          </div>
+          <div className="row-title">Top Rated Movies</div>
           <div className="film-row">
             {topRatedMovies && this.renderFilmCards(topRatedMovies)}
           </div>
@@ -69,6 +64,6 @@ class Main extends React.Component {
       </div>
     );
   }
-  }
+}
 
 export default Main;

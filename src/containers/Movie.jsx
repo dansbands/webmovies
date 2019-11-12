@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { getMovieById } from "../utils";
 import { Link } from "react-router-dom";
-import { IMG_BASE_URL, API_KEY } from '../utils/constants.js'
+import { IMG_BASE_URL } from '../utils/constants.js'
 import ModalVideo from 'react-modal-video'
 
 class Movie extends React.Component {
@@ -16,7 +16,6 @@ class Movie extends React.Component {
 
     getMovieById(id)
     .then(data => {
-      console.log("data", data)
       this.setState({ movie: data });
       if (data.videos && data.videos.results && data.videos.results.length) {
         this.setState({ videoId: data.videos.results[0].key })
@@ -25,7 +24,6 @@ class Movie extends React.Component {
   }
 
   handlePlay = e => {
-    console.log("videoId", this.state.videoId);
     this.setState({ isOpen: true })
   }
 
@@ -34,17 +32,13 @@ class Movie extends React.Component {
     const { movie } = this.state;
     const width = "w400/";
     const url = `url(${IMG_BASE_URL}w500${movie.backdrop_path}) no-repeat center center fixed`
-    // console.log(url);
-    console.log('movie', movie);
-    // poster image, title, synopsis, duration and rating
+
     return (
       <div className="App">
         <header>
           <Link className="main-title" to="/">
             <h3>WebMovies</h3>
-
-                <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={this.state.videoId} onClose={() => this.setState({isOpen: false})} />
-
+              <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={this.state.videoId} onClose={() => this.setState({isOpen: false})} />
           </Link>
         </header>
         <main>
@@ -57,13 +51,15 @@ class Movie extends React.Component {
                 <p>{movie.runtime} minutes</p>
                 <p>Users rated: {movie.vote_average/2} out of five stars. </p>
               </div>
-              <div className="controls" onClick={this.handlePlay}>
                 {this.state.videoId ? (
-                  <i className="material-icons">play_circle_outline</i>
+                  <div className="controls" onClick={this.handlePlay}>
+                    <i className="material-icons">play_circle_outline</i>
+                  </div>
                 ) : (
-                  <h3>Coming Soon!</h3>
+                  <div className="controls-disabled">
+                    <h3>Coming Soon!</h3>
+                  </div>
                 )}
-              </div>
               <div className="movie-poster">
                 <img src={`${IMG_BASE_URL}${width}${movie.poster_path}`} alt="poster" />
               </div>
