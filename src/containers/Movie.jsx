@@ -48,7 +48,7 @@ class Movie extends React.Component {
                 <p>Users rated: {movie.vote_average/2} out of five stars. </p>
               </div>
               <div className="controls">
-
+                <i className="material-icons">play_circle_outline</i>
               </div>
               <div className="movie-poster">
                 <img src={`${IMG_BASE_URL}${width}${movie.poster_path}`} alt="poster" />
