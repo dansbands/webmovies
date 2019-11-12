@@ -67,6 +67,10 @@ main {
   align-items: center;
 }
 
+.controls :hover {
+  cursor: pointer;
+}
+
 .controls i {
   font-size: 80px;
 }

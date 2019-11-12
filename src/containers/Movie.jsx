@@ -22,6 +22,10 @@ class Movie extends React.Component {
     })
   }
 
+  handlePlay = e => {
+    alert("play");
+  }
+
   render() {
     // console.log("props", this.props);
     const { movie } = this.state;
@@ -47,7 +51,7 @@ class Movie extends React.Component {
                 <p>{movie.runtime} minutes</p>
                 <p>Users rated: {movie.vote_average/2} out of five stars. </p>
               </div>
-              <div className="controls">
+              <div className="controls" onClick={this.handlePlay}>
                 <i className="material-icons">play_circle_outline</i>
               </div>
               <div className="movie-poster">
